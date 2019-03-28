@@ -1,0 +1,19 @@
+** The chart is being deployed. You can check on its progress using kubectl get pods/services. **
+
+Local hostname for internal resolution, provided the local cluster name for DNS resolution has not been changed:
+
+    {{ template "pritunl.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+
+This chart should only be deployed after a MongoDB instance has been provisioned. It is recommended to use the official MongoDB chart.
+
+Standard configuration dictates that the MongoDB instance is reachable via:
+    
+    pritunl-mongodb.{{ .Release.Namespace }}.svc.cluster.local
+
+Check /var/log/pritunl.log or run "kubectl logs pritunl" for additional troubleshooting information during startup. The service will not be reachable if the database could not be contacted.
+
+It is extremely important to verify that the annotations section in pritunl-service.yaml is uncommented (if commented out) after local testing is complete as these are necessary for an AWS ELB to work properly.
+
+If testing locally, you can port forward to the webui using the following command:
+
+    sudo kubectl port-forward --namespace default svc/pritunl 443:443 (or whatever port you've chosen for the webui)
