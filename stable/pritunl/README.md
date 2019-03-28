@@ -10,11 +10,13 @@ Don't skip over the "Important Considerations" section at the end before install
 
 ## Prerequisites
 
-* `helm` must be installed to manage or install the charts. <https://github.com/helm/helm>
+* [Helm](https://github.com/helm/helm) must be installed to manage or install the charts.
 
 * It is also assumed that an **EKS cluster** is available to deploy within.
 
 * You should deploy `mongodb` using the official chart before deploying `pritunl`. Make sure the value `usePassword: false` is set in the `values.yaml` file for `mongodb`.
+
+* In order for the annotation `external-dns.alpha.kubernetes.io/hostname: "pritunl.mydomain.com"` to function properly, you must have [external-dns](https://github.com/kubernetes-incubator/external-dns) running in your EKS cluster.
 
 ## Usage
 
