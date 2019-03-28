@@ -12,8 +12,6 @@ Standard configuration dictates that the MongoDB instance is reachable via:
 
 Check /var/log/pritunl.log or run "kubectl logs pritunl" for additional troubleshooting information during startup. The service will not be reachable if the database could not be contacted.
 
-It is extremely important to verify that the annotations section in pritunl-service.yaml is uncommented (if commented out) after local testing is complete as these are necessary for an AWS ELB to work properly.
-
 If testing locally, you can port forward to the webui using the following command:
 
     sudo kubectl port-forward --namespace default svc/pritunl 443:443 (or whatever port you've chosen for the webui)
