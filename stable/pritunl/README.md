@@ -14,7 +14,7 @@ Don't skip over the "Important Considerations" section at the end before install
 
 * It is also assumed that an **EKS cluster** is available to deploy within.
 
-* You should deploy `mongodb` using the official chart before deploying `pritunl`. Make sure the value `usePassword: false` is set in the `values.yaml` file for `mongodb`.
+* You should deploy `mongodb` using the official chart before deploying `pritunl`. See https://docs.pritunl.com/docs/securing-mongodb regarding creating a `pritunl` user, etc.
 
 * In order for the annotation `external-dns.alpha.kubernetes.io/hostname: "pritunl.mydomain.com"` to function properly, you must have [external-dns](https://github.com/kubernetes-incubator/external-dns) running in your EKS cluster.
 
@@ -73,7 +73,4 @@ If there are other commands that need to be run, it is recommended to rebuild th
 
 * The `mongodb` chart should be installed first. We recommend using the official `monbodb` Helm chart for this.
 * The charts should be installed with the names `pritunl` and `pritunl-mongodb` - doing anything else will break functionality unless you have explicitly changed the `mongoService` variable mentioned above.
-* The value "usePassword" should be set to false in the MongoDB chart. Pritunl won't be able to create/maintain its database otherwise. You can configure security however is necessary otherwise.
-```
-usePassword: false
-```
+* You may need to create a `pritunl` user within MongoDB depending on your setup. Check out https://docs.pritunl.com/docs/securing-mongodb.
