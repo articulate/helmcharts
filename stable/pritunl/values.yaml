@@ -15,19 +15,21 @@ readinessProbe:
   failureThreshold: 6
   successThreshold: 1
 
+# Image Settings
 image:
   registry: docker.io
   repository: eb129/pritunl
   tag: v2
   pullPolicy: Always
 
+# Mongo Settings
 mongo:
   # This should match whatever the 'mongodb' service is called in the cluster.
   # DNS should be able to resolve the service by this name for Pritunl to function.
   serviceName: "pritunl-mongodb"
   useLocalDB: false
 
-# Change these as you see fit.
+# Service Port Settings
 ports:
   http: 80
   vpn: 1194
