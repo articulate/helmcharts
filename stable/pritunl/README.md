@@ -30,21 +30,21 @@ The `pritunl` service created as part of the chart will create an ELB if the ser
 
 ## Configurable Values:
 
-|         Parameter    |                                   Description                                                                                                             |     Default      |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------  |
-| `image.registry`     | Image repository where the `pritunl` image is hosted.                                                                                                     | `docker.io`      |
-| `image.repository`   | Image name path.                                                                                                                                          | `eb129/pritunl`  |
-| `image.tag`          | Image tag.                                                                                                                                                | `latest`         |
-| `image.pullPolicy`   | Image pull policy.                                                                                                                                        | `Always`         |
-| `mongoService`       | The DNS name of the `mongodb` `Service` running in the cluster.                                                                                           | `pritunl-mongodb`|
-| `ports.http`         | The port that the pod will listen for HTTP requests on.                                                                                                   | `80`             |
-| `ports.vpn`          | The port that the pod will listen for inbound VPN connection requests on.                                                                                 | `1194`           |
-| `ports.webui`        | The port that the pod will listen for the Pritunl user interface on.                                                                                      | `443`            |
-| `privileged.enabled` | Whether or not the containers should be privileged. Should be enabled unless there's a good reason not to be.                                             | `true`           |
-| `replicaCount`       | The number of pods that will run in the `ReplicaSet` as a part of the `Deployment`. This is effectively how many HA nodes you want.                       | `3`              |
-| `service.annotations`| The annotations required on the `Service` when using this behind an Amazon Elastic Load Balancer. The values are configurable, see the `values.yaml` file.| See `values.yaml`|
-| `service.type`       | The type declaration for the `Service`. Can be `NodePort` or `LoadBalancer`.                                                                              | `LoadBalancer`   |
-| `tty.enabled`        | Allocate a TTY for the Pritunl containers. This needs to be on so you can gain access to the Pritunl pods for troubleshooting, etc.                       | `true`           |
+| Parameter             | Description                                                                                                                                                | Default           |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `image.registry`      | Image repository where the `pritunl` image is hosted.                                                                                                      | `docker.io`       |
+| `image.repository`    | Image name path.                                                                                                                                           | `eb129/pritunl`   |
+| `image.tag`           | Image tag.                                                                                                                                                 | `latest`          |
+| `image.pullPolicy`    | Image pull policy.                                                                                                                                         | `Always`          |
+| `mongoService`        | The DNS name of the `mongodb` `Service` running in the cluster.                                                                                            | `pritunl-mongodb` |
+| `ports.http`          | The port that the pod will listen for HTTP requests on.                                                                                                    | `80`              |
+| `ports.vpn`           | The port that the pod will listen for inbound VPN connection requests on.                                                                                  | `1194`            |
+| `ports.webui`         | The port that the pod will listen for the Pritunl user interface on.                                                                                       | `443`             |
+| `privileged.enabled`  | Whether or not the containers should be privileged. Should be enabled unless there's a good reason not to be.                                              | `true`            |
+| `replicaCount`        | The number of pods that will run in the `ReplicaSet` as a part of the `Deployment`. This is effectively how many HA nodes you want.                        | `3`               |
+| `service.annotations` | The annotations required on the `Service` when using this behind an Amazon Elastic Load Balancer. The values are configurable, see the `values.yaml` file. | See `values.yaml` |
+| `service.type`        | The type declaration for the `Service`. Can be `NodePort` or `LoadBalancer`.                                                                               | `LoadBalancer`    |
+| `tty.enabled`         | Allocate a TTY for the Pritunl containers. This needs to be on so you can gain access to the Pritunl pods for troubleshooting, etc.                        | `true`            |
 
 ## Installation
 

@@ -1,12 +1,31 @@
+# Health Checks
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
 image:
   registry: docker.io
   repository: eb129/pritunl
-  tag: latest
+  tag: v2
   pullPolicy: Always
 
-# This should match whatever the 'mongodb' service is called in the cluster.
-# DNS should be able to resolve the service by this name for Pritunl to function.
-mongoService: "pritunl-mongodb"
+mongo:
+  # This should match whatever the 'mongodb' service is called in the cluster.
+  # DNS should be able to resolve the service by this name for Pritunl to function.
+  serviceName: "pritunl-mongodb"
+  useLocalDB: false
 
 # Change these as you see fit.
 ports:
@@ -35,20 +54,3 @@ service:
 
 tty:
   enabled: true
-
-# Health Checks
-livenessProbe:
-  enabled: true
-  initialDelaySeconds: 30
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
-
-readinessProbe:
-  enabled: true
-  initialDelaySeconds: 5
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
