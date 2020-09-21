@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "pritunl.fullname" . }}
@@ -27,7 +27,11 @@ spec:
         # This variable gets passed to the pods to insert the resolvable DNS hostname of the MongoDB service.
         env:
         - name: MONGO_HOST
-          value: {{ .Values.mongoService }}
+          value: {{ .Values.mongo.serviceName }}
+        {{- if .Values.mongo.useLocalDB }}
+        - name: USE_LOCAL_DB
+          value: "true"
+        {{- end }}
         ports:
           - containerPort: {{ .Values.ports.http }}
             name: backend-http
